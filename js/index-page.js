@@ -3,12 +3,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // 弹窗显示脚本
     // 检查用户是否已经看过声明
     const hasSeenDisclaimer = localStorage.getItem('hasSeenDisclaimer');
-    
+
+    // 默认设置为已看过声明，禁用弹窗显示
+    if (!hasSeenDisclaimer) {
+        localStorage.setItem('hasSeenDisclaimer', 'true');
+    }
+
+    // 弹窗逻辑已禁用 - 如需重新启用，请取消下面代码的注释
+    /*
     if (!hasSeenDisclaimer) {
         // 显示弹窗
         const disclaimerModal = document.getElementById('disclaimerModal');
         disclaimerModal.style.display = 'flex';
-        
+
         // 添加接受按钮事件
         document.getElementById('acceptDisclaimerBtn').addEventListener('click', function() {
             // 保存用户已看过声明的状态
@@ -17,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             disclaimerModal.style.display = 'none';
         });
     }
+    */
 
     // URL搜索参数处理脚本
     // 首先检查是否是播放URL格式 (/watch 开头的路径)
