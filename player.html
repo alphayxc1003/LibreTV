@@ -58,6 +58,36 @@
         </div>
     </div>
 
+    <!-- 左侧竖向广告 -->
+    <div class="ad-banner-container ad-banner-left" id="leftAdBanner">
+        <div class="ad-banner">
+            <button class="ad-close-btn" onclick="closeAd('left')" title="关闭广告">&times;</button>
+            <div class="ad-label">广告</div>
+            <!-- 广告内容将在这里插入 -->
+            <div id="leftAdContent" class="w-full h-full flex items-center justify-center text-gray-500">
+                <div class="text-center">
+                    <div class="text-sm mb-2">广告位</div>
+                    <div class="text-xs">160x600</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 右侧竖向广告 -->
+    <div class="ad-banner-container ad-banner-right" id="rightAdBanner">
+        <div class="ad-banner">
+            <button class="ad-close-btn" onclick="closeAd('right')" title="关闭广告">&times;</button>
+            <div class="ad-label">广告</div>
+            <!-- 广告内容将在这里插入 -->
+            <div id="rightAdContent" class="w-full h-full flex items-center justify-center text-gray-500">
+                <div class="text-center">
+                    <div class="text-sm mb-2">广告位</div>
+                    <div class="text-xs">160x600</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <main class="container mx-auto px-4 py-4">        <!-- 视频播放区 -->
         <div id="playerContainer" class="player-container mb-4">
             <div class="relative">
@@ -231,6 +261,7 @@
     <script src="js/ui.js"></script>
     <script src="js/api.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/ads.js"></script>
     <script src="js/player.js"></script>
 
     <script>
@@ -244,6 +275,10 @@
 
         // 修复 home 跳转
         document.addEventListener('DOMContentLoaded', function() {
+            // 初始化广告管理器
+            if (window.adManager) {
+                window.adManager.init();
+            }
             // 使用事件委托处理首页按钮点击
             document.body.addEventListener('click', function(event) {
                 const homeButton = event.target.closest('#homeButton');
