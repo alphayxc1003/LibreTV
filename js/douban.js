@@ -125,7 +125,8 @@ function updateDoubanVisibility() {
     if (isEnabled && !isSearching) {
         doubanArea.classList.remove('hidden');
         // 如果豆瓣结果为空，重新加载
-        if (document.getElementById('douban-results').children.length === 0) {
+        const doubanResults = document.getElementById('douban-results');
+        if (doubanResults && doubanResults.children.length === 0) {
             renderRecommend(doubanCurrentTag, doubanPageSize, doubanPageStart);
         }
     } else {
@@ -571,8 +572,8 @@ function resetToHome() {
     updateDoubanVisibility();
 }
 
-// 加载豆瓣首页内容
-document.addEventListener('DOMContentLoaded', initDouban);
+// 加载豆瓣首页内容 - 移除独立的DOMContentLoaded监听器，改为在app.js中调用
+// document.addEventListener('DOMContentLoaded', initDouban);
 
 // 显示标签管理模态框
 function showTagManageModal() {

@@ -59,6 +59,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // 初始检查成人API选中状态
     setTimeout(checkAdultAPIsSelected, 100);
+
+    // 初始化豆瓣功能 - 延迟执行确保DOM完全加载
+    setTimeout(() => {
+        if (typeof initDouban === 'function') {
+            initDouban();
+        }
+    }, 200);
 });
 
 // 初始化API复选框
